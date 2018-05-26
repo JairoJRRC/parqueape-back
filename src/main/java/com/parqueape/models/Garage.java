@@ -18,7 +18,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="TB_COCHERA")
+@Table(name="tb_cochera")
 public class Garage implements Serializable {
 
 	@Id

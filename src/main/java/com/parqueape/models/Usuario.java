@@ -17,7 +17,7 @@ import javax.persistence.TemporalType;
 import com.parqueape.util.EnumRole;
 
 @Entity
-@Table(name="TB_USUARIO")
+@Table(name="tb_usuario")
 public class Usuario implements Serializable {
 	
 	public Usuario() {
