@@ -24,16 +24,12 @@ public class Usuario implements Serializable {
 	}	
 
 	public static Usuario create(
-		String name,
-		String lastName,
 		EnumRole role,
 		String email,
 		String password,
 		Date createAt
 	) {
 		Usuario obj = new Usuario();
-		obj.name = name;
-		obj.lastName = lastName;
 		obj.role = role;
 		obj.email = email;
 		obj.password = password;
@@ -45,12 +41,6 @@ public class Usuario implements Serializable {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
-	
-	@Column(length=50)
-	private String name;
-	
-	@Column(length=50)
-	private String lastName;
 	
 	@Enumerated(EnumType.STRING)
 	private EnumRole role;
@@ -65,9 +55,6 @@ public class Usuario implements Serializable {
 	
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date createAt;
-	
-	@Temporal(TemporalType.TIMESTAMP)
-	private Date editAt;
 
 	public Long getId() {
 		return id;
@@ -75,22 +62,6 @@ public class Usuario implements Serializable {
 
 	public void setId(Long id) {
 		this.id = id;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public String getLastName() {
-		return lastName;
-	}
-
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
 	}
 
 	public EnumRole getRole() {
@@ -132,19 +103,7 @@ public class Usuario implements Serializable {
 	public void setCreateAt(Date createAt) {
 		this.createAt = createAt;
 	}
+	
+	
 
-	public Date getEditAt() {
-		return editAt;
-	}
-
-	public void setEditAt(Date editAt) {
-		this.editAt = editAt;
-	}
-
-	@Override
-	public String toString() {
-		return "Usuario [id=" + id + ", name=" + name + ", lastName=" + lastName + ", role=" + role + ", email=" + email
-				+ ", password=" + password + ", isActive=" + isActive + ", createAt=" + createAt + ", editAt=" + editAt
-				+ "]";
-	}
 }
