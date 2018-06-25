@@ -1,48 +1,50 @@
 package com.parqueape.models;
 
+
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import java.util.Collection;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
-import javax.persistence.FetchType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="TB_COCHERA")
+@Table(name = "TB_COCHERA")
 public class Garage implements Serializable {
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
-	@Column(length=50)
+
+	@Column(length = 50)
 	private String title;
-	
-	@Column(length=50)
+
+	@Column(length = 50)
 	private String coordinates;
-	
-	@Column(length=50)
+
+	@Column(length = 500)
 	private String address;
-	
-	@Column(length=50)
+
+	@Column(length = 500)
 	private String photo;
 
- 	@ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "company_id")
-	private Company company;
+	@Column(name="company_id")
+	private Long companyId;
+
+	@Column
+	private Integer numberSites;
 	
-	@OneToMany(mappedBy = "garage")
-	private List<Site> sites = new ArrayList<Site>();
+	@Column
+	private Float pricePerHour;
+	
+	@Column(length = 500)
+	private String description;
 
 	public Garage() {
 	}
@@ -87,20 +89,36 @@ public class Garage implements Serializable {
 		this.photo = photo;
 	}
 
-	public Company getCompany() {
-		return company;
+	public Long getCompanyId() {
+		return companyId;
 	}
 
-	public void setCompany(Company company) {
-		this.company = company;
+	public void setCompanyId(Long companyId) {
+		this.companyId = companyId;
 	}
 
-	public List<Site> getSites() {
-		return sites;
+	public Integer getNumberSites() {
+		return numberSites;
 	}
 
-	public void setSites(List<Site> sites) {
-		this.sites = sites;
+	public void setNumberSites(Integer numberSites) {
+		this.numberSites = numberSites;
+	}
+
+	public Float getPricePerHour() {
+		return pricePerHour;
+	}
+
+	public void setPricePerHour(Float pricePerHour) {
+		this.pricePerHour = pricePerHour;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
 	}
 	
 	

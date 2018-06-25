@@ -3,13 +3,11 @@ package com.parqueape.models;
 import java.io.Serializable;
 import java.util.Date;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -48,8 +46,8 @@ public class Client implements Serializable {
 	@Column(length = 50)
 	private String email;
 
-	@OneToOne(cascade = CascadeType.ALL)
-	private Usuario user;
+	@Column
+	private Long userId;
 
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date createAt;
@@ -58,9 +56,8 @@ public class Client implements Serializable {
 	private Date editAt;
 	
 	public Client() {
-	}	
+	}
 
-	
 	public Long getId() {
 		return id;
 	}
@@ -141,12 +138,12 @@ public class Client implements Serializable {
 		this.email = email;
 	}
 
-	public Usuario getUser() {
-		return user;
+	public Long getUserId() {
+		return userId;
 	}
 
-	public void setUser(Usuario user) {
-		this.user = user;
+	public void setUserId(Long userId) {
+		this.userId = userId;
 	}
 
 	public Date getCreateAt() {
@@ -163,7 +160,7 @@ public class Client implements Serializable {
 
 	public void setEditAt(Date editAt) {
 		this.editAt = editAt;
-	}
-	
+	}	
+
 	
 }
